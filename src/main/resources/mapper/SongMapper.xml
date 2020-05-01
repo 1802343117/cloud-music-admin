@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1851.music.admin.mapper.SongMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soft1851.music.admin.entity.Song">
+        <id column="song_id" property="songId" />
+        <result column="song_name" property="songName" />
+        <result column="sort_id" property="sortId" />
+        <result column="singer" property="singer" />
+        <result column="duration" property="duration" />
+        <result column="thumbnail" property="thumbnail" />
+        <result column="url" property="url" />
+        <result column="lyric" property="lyric" />
+        <result column="comment_count" property="commentCount" />
+        <result column="like_count" property="likeCount" />
+        <result column="play_count" property="playCount" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 查询所有的 Song -->
+    <select id="selectAll" resultType="com.soft1851.music.admin.entity.Song">
+        SELECT song_id, song_name, sort_id, singer, duration,
+               thumbnail, url, comment_count, like_count, play_count,
+               delete_flag, update_time, create_time
+        FROM cloud_music.song
+    </select>
+
+    <!-- 插入一个 Song -->
+    <insert id="insertSong" parameterType="com.soft1851.music.admin.entity.Song">
+        INSERT INTO cloud_music.song (cloud_music.song.song_id, cloud_music.song.song_name, cloud_music.song.sort_id,
+                                      cloud_music.song.singer, cloud_music.song.duration, cloud_music.song.thumbnail,
+                                      cloud_music.song.url, cloud_music.song.lyric, cloud_music.song.comment_count,
+                                      cloud_music.song.like_count, cloud_music.song.play_count, cloud_music.song.delete_flag)
+        VALUES (#{songId}, #{songName}, #{sortId}, #{singer}, #{duration}, #{thumbnail}, #{url}, #{lyric}, #{commentCount}, #{likeCount}, #{playCount}, #{deleteFlag})
+    </insert>
+
+    <!-- 根据 ID 查询 Song -->
+    <select id="selectById" parameterType="String" resultType="com.soft1851.music.admin.entity.Song">
+        SELECT *
+        FROM cloud_music.song
+        WHERE song_id = #{id}
+    </select>
+
+    <!-- 根据 ID 修改 Song -->
+    <update id="update" parameterType="com.soft1851.music.admin.entity.Song">
+        UPDATE cloud_music.song
+        SET cloud_music.song.song_name = #{songName}
+        WHERE cloud_music.song.song_id = #{songId}
+    </update>
+
+    <!-- 根据 ID 删除 Song -->
+    <delete id="delete" parameterType="String">
+        DELETE
+        FROM cloud_music.song
+        WHERE cloud_music.song.song_id = #{id}
+    </delete>
+
+</mapper>
