@@ -54,7 +54,7 @@ class MySqlGenerator {
                 //数据库表映射到实体的命名策略为驼峰式
                 .setNaming(NamingStrategy.underline_to_camel)
                 //生成表，可以写多个,如果不加参数，默认为所有表
-                .setInclude()
+                .setInclude("sys_user")
                 .setEntityBuilderModel(true)
                 .setEntityLombokModel(true)
                 .setRestControllerStyle(true)
