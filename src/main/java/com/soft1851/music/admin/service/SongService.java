@@ -45,4 +45,9 @@ public interface SongService extends IService<Song> {
      * @param id
      */
     void delete(String id);
+
+    /**
+     * 导出数据
+     */
+    void exportData();
 }

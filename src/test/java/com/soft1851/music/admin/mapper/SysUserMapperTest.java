@@ -25,7 +25,8 @@ class SysUserMapperTest {
         sysUser.setUserId("01abc123")
                 .setUserName("测试用户")
                 .setNickName("测试用力哦")
-                .setPassword("测试密码");
+                .setPassword("测试密码")
+                .setAvatar("http://tunlmusic.oss-cn-shenzhen.aliyuncs.com/1.jpg");
         sysUserMapper.update(sysUser);
         // 查看修改是否成功
         System.out.println(sysUserMapper.selectById("01abc123"));

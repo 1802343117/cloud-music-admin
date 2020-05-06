@@ -1,14 +1,16 @@
 package com.soft1851.music.admin.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.soft1851.music.admin.annotation.ExcelVoAttribute;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -30,12 +32,14 @@ public class Song extends Model<Song> {
      * 歌曲id
      */
     @TableId("song_id")
+    @ExcelVoAttribute(name = "歌曲ID", column = 0)
     private String songId;
 
     /**
      * 歌曲名称
      */
     @TableField("song_name")
+    @ExcelVoAttribute(name = "歌曲名称", column = 1)
     private String songName;
 
     /**
@@ -48,6 +52,7 @@ public class Song extends Model<Song> {
      * 歌手
      */
     @TableField("singer")
+    @ExcelVoAttribute(name = "歌手姓名", column = 2)
     private String singer;
 
     /**
@@ -66,6 +71,7 @@ public class Song extends Model<Song> {
      * 歌曲地址
      */
     @TableField("url")
+//    @ExcelVoAttribute(name = "歌曲链接", column = 5)
     private String url;
 
     /**

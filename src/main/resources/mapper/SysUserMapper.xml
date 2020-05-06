@@ -37,6 +37,7 @@
             password = #{password},
             phone = #{phone},
             email = #{email},
+            avatar = #{avatar},
             address = #{birthday},
             update_time = #{updateTime},
             salt = #{salt}

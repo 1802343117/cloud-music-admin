@@ -3,6 +3,7 @@ package com.soft1851.music.admin.controller;
 
 import com.soft1851.music.admin.entity.Song;
 import com.soft1851.music.admin.mapper.SongMapper;
+import com.soft1851.music.admin.service.SongService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,9 @@ import java.util.List;
 public class SongController {
     @Resource
     private SongMapper songMapper;
+
+    @Resource
+    private SongService songService;
 
     /**
      * 所有的 Song
@@ -68,6 +72,11 @@ public class SongController {
         System.out.println("修改Song");
         System.out.println(song);
         songMapper.update(song);
+    }
+
+    @GetMapping(value = "/export")
+    public void exportData() {
+        songService.exportData();
     }
 
 }
